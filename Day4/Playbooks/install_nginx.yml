@@ -1,0 +1,17 @@
+---
+- name: Install, Configure and Dploys web page in nginx web server
+  hosts: all
+  vars_files:
+    - custom_variables
+    
+  tasks:
+    - include: installnginx.yml
+    - include: configure_web_root_folder.yml
+    - include: configure_webroot_customepage.yml
+
+  handlers:
+
+    - name: Restart nginx service on centos
+      service: name=nginx state=restarted
+
+

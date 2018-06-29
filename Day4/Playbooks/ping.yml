@@ -1,0 +1,8 @@
+---
+
+- name: This play will demonstrate the user of ping module
+  hosts: all
+  tasks:
+    - name: ping the remote node
+      ping: 
+

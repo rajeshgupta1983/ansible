@@ -1,0 +1,25 @@
+- name: Demonstrate use of ansible docker modules
+  hosts: localhost
+  tasks:
+   - name: start ubuntu container
+     docker:
+         name: "ubuntu{{item}}"
+         hostname: "ubuntu{{item}}"
+         image: boa/ansible-ubuntu
+         state: started
+         ports:
+            - "200{{item}}:22"
+            - "800{{item}}:80"
+     with_sequence: start=3 end=7
+
+   - name: start centos container
+     docker:
+         name: "centos{{item}}"
+         hostname: "centos{{item}}"
+         image: boa/ansible-centos1
+         state: started
+         ports:
+            - "300{{item}}:22"
+            - "900{{item}}:80"
+     with_sequence: start=3 end=7
+

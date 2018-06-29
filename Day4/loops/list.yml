@@ -1,0 +1,14 @@
+- name: Demonstrate list and how to itrate a loop- defibed variable
+  hosts: all
+  vars:
+   - my_softwares:
+      - vim
+      - tree
+      - ruby
+      - maven
+      - default -jdk
+  tasks:
+   - name: Install the software tool
+     debug: msg="Need to install {{item}} utility."
+     # apt: name={{item}} state=present update_cache=yes
+     with_list: "{{my_softwares}}"

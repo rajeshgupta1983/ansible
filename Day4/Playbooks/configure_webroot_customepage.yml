@@ -1,0 +1,9 @@
+- name: Creat the web root folder
+  #shell: mkdir -p /var/html
+  file: path=/var/html state=directory mode=777
+
+- name: Deploy our customhtml page in nginx web server
+  template: src=index.html.j2 dest=/var/html/index.html
+  notify:
+    - Restart nginx web service
+

@@ -1,0 +1,15 @@
+---
+
+- name: This play will demonstrate apt module
+  hosts: all
+  tasks:
+    - name: install vim editor
+      apt: name=vim state=latest update_cache=yes
+
+    - name: install tree utility
+      apt: name=tree state=latest update_cache=yes
+- name: This is second play
+  hosts: all
+  tasks:
+    - name: This task belong to second play
+      debug: msg="second play - first task"

@@ -1,0 +1,14 @@
+- name: Demonstrate dictonary variable and its navigation
+  hosts: localhost
+  vars:
+   - contacts:
+        Sriram:
+          name: Sriram jeganathan
+          mobile: 123-456-7890
+        Rajesh:
+          name: Rajesh Gupta
+          mobile: 9025-687-739
+  tasks:
+   - name: print all contacts
+     debug: msg="Mobile nunber of {{item.key}} is {{item.value.mobile}}."
+     with_dict: "{{contacts}}"
